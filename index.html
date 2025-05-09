@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录页面</title>
+    <style>
+body {
+    background-image: url("images/login_background.jpg"); /* 圖片路徑 */
+    background-size: cover;       /* 讓圖片填滿畫面 */
+    background-position: center;  /* 圖片置中 */
+    background-repeat: no-repeat; /* 不重複顯示 */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* 限制最大宽度 */
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* 针对手机屏幕的优化 */
+        @media (max-width: 600px) {
+            .login-container {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>萬盈國際投資站</h2>
+    <p class="tagline">智能投資·穩健回報</p>
+    <input type="text" id="username" placeholder="用戶名稱">
+    <input type="password" id="password" placeholder="密碼">
+    <button onclick="login()">登入</button>
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+    function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var messageDiv = document.getElementById("message");
+
+        // 無論輸入什麼都認為是成功登入，這裡可以加上真實的登入邏輯
+        if (username && password) {
+            messageDiv.innerHTML = "登入成功，歡迎 " + username;
+            
+            // 登入成功後跳轉到儀表板頁面
+            window.location.href = "2-儀表板.html";  // 這裡會跳轉到儀表板頁面
+        } else {
+            messageDiv.innerHTML = "請輸入用戶名稱和密碼！";
+        }
+    }
+</script>
+
+</body>
+</html>
