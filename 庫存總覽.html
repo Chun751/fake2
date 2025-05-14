@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>庫存總覽 - 萬盈國際投資站</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Microsoft JhengHei', sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffd700;
+    }
+
+    .stock-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .stock-table th, .stock-table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .stock-table th {
+      background-color: #111;
+      color: #ffd700;
+    }
+
+    .stock-name {
+      font-weight: bold;
+    }
+
+    .profit {
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    .summary {
+      background-color: #111;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    .summary div {
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    a.btn {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+      background-color: #ffd700;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a.btn:hover {
+      background-color: #e5b100;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📈 庫存總覽</h1>
+
+  <table class="stock-table">
+    <thead>
+      <tr>
+        <th>股票名稱</th>
+        <th>持股數</th>
+        <th>平均買入價</th>
+        <th>目前股價</th>
+        <th>總損益</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="stock-name">暴漲科技</td>
+        <td>40 股</td>
+        <td>$5</td>
+        <td>$12</td>
+        <td class="profit">+$280（+140%）</td>
+      </tr>
+      <tr>
+        <td class="stock-name">星際鋼鐵</td>
+        <td>30 股</td>
+        <td>$6</td>
+        <td>$8</td>
+        <td class="profit">+$60（+33.3%）</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <div>💵 總投資金額：$500</div>
+    <div>📈 總損益：<span class="profit">+$340</span></div>
+    <div>💰 現金餘額：$840</div>
+  </div>
+
+  <a href="儀表板.html" class="btn">🔙 返回儀表板</a>
+
+</body>
+</html>
