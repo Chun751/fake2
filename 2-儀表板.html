@@ -48,6 +48,7 @@
       font-weight: bold;
       margin-top: 15px;
       margin-bottom: 10px;
+      cursor: pointer;
     }
 
     .quick-actions {
@@ -56,7 +57,8 @@
       gap: 12px;
     }
 
-    .quick-actions a {
+    .quick-actions a,
+    .quick-actions button {
       background-color: #ffd700;
       color: #000;
       text-decoration: none;
@@ -64,24 +66,15 @@
       padding: 10px;
       border-radius: 8px;
       text-align: center;
-    }
-
-    .quick-actions button {
-      background-color: #222;
-      color: #fff;
-      border: 1px solid #444;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 15px;
+      border: none;
       cursor: pointer;
-      transition: background-color 0.2s;
     }
 
     .quick-actions button:hover {
-      background-color: #333;
+      background-color: #e5b100;
     }
 
-    /* Modal 彈窗 */
+    /* Modal 通用樣式 */
     .modal {
       display: none;
       position: fixed;
@@ -122,12 +115,12 @@
       font-weight: bold;
     }
 
-    .modal-content .confirm-btn {
+    .confirm-btn {
       background-color: #ffd700;
       color: #000;
     }
 
-    .modal-content .cancel-btn {
+    .cancel-btn {
       background-color: #555;
       color: #fff;
     }
@@ -141,29 +134,38 @@
       <div class="info-line">💰 總資產：$<span id="total-asset">0</span></div>
       <div class="info-line">📈 投資報酬率：<span id="roi">0%</span></div>
       <div class="info-line">💵 現金餘額：$<span id="cash-balance">0</span></div>
-      <a href="#" class="btn" onclick="openTopUpModal()">充值餘額</a>
+      <a class="btn" onclick="openTopUpModal()">充值餘額</a>
     </div>
 
     <div class="quick-actions">
       <a href="投資組合.html">📊 查看投資組合</a>
       <button>🧾 查看交易紀錄</button>
-      <button>⚙️ 帳戶設定</button>
+      <button onclick="openSettingsModal()">⚙️ 帳戶設定</button>
       <a href="index.html">🔒 登出</a>
     </div>
   </div>
 
-  <!-- 彈出視窗區塊 -->
+  <!-- 充值視窗（僅修改現金餘額） -->
   <div id="topup-modal" class="modal">
     <div class="modal-content">
-      <h2>充值資訊</h2>
-      <label>總資產：</label><br>
-      <input type="text" id="input-total-asset" placeholder="$0"><br>
-      <label>投資報酬率：</label><br>
-      <input type="text" id="input-roi" placeholder="0%"><br>
+      <h2>充值現金餘額</h2>
       <label>現金餘額：</label><br>
       <input type="text" id="input-cash" placeholder="$0"><br><br>
       <button class="confirm-btn" onclick="submitTopUp()">確認</button>
       <button class="cancel-btn" onclick="closeTopUpModal()">取消</button>
+    </div>
+  </div>
+
+  <!-- 帳戶設定視窗（設定總資產和投資報酬率） -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <h2>帳戶設定</h2>
+      <label>總資產：</label><br>
+      <input type="text" id="input-total-asset" placeholder="$0"><br>
+      <label>投資報酬率：</label><br>
+      <input type="text" id="input-roi" placeholder="0%"><br><br>
+      <button class="confirm-btn" onclick="submitSettings()">儲存</button>
+      <button class="cancel-btn" onclick="closeSettingsModal()">取消</button>
     </div>
   </div>
 
@@ -177,15 +179,30 @@
     }
 
     function submitTopUp() {
-      const asset = document.getElementById("input-total-asset").value;
-      const roi = document.getElementById("input-roi").value;
       const cash = document.getElementById("input-cash").value;
-
-      if (asset) document.getElementById("total-asset").innerText = asset;
-      if (roi) document.getElementById("roi").innerText = roi;
       if (cash) document.getElementById("cash-balance").innerText = cash;
 
       closeTopUpModal();
+      alert("✅ 充值成功！");
+    }
+
+    function openSettingsModal() {
+      document.getElementById("settings-modal").style.display = "flex";
+    }
+
+    function closeSettingsModal() {
+      document.getElementById("settings-modal").style.display = "none";
+    }
+
+    function submitSettings() {
+      const asset = document.getElementById("input-total-asset").value;
+      const roi = document.getElementById("input-roi").value;
+
+      if (asset) document.getElementById("total-asset").innerText = asset;
+      if (roi) document.getElementById("roi").innerText = roi;
+
+      closeSettingsModal();
+      alert("✅ 設定已儲存！");
     }
   </script>
 </body>
